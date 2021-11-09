@@ -18,7 +18,7 @@ public class Player_Movement : MonoBehaviour
         if (Input.GetKey (KeyCode.D))
         {
             speed = 0.2f;
-            transform.Translate(1 * speed, body.velocity.y, 0f);
+            transform.Translate(speed, body.velocity.y, 0f);
         }
     }
 }
