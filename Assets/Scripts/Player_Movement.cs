@@ -15,10 +15,19 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speed = 0.2f;
+
+        /* A D Movements */
         if (Input.GetKey (KeyCode.D))
         {
-            speed = 0.2f;
             transform.Translate(speed, body.velocity.y, 0f);
         }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(- speed, body.velocity.y, 0f);
+        }
+
+
     }
 }
