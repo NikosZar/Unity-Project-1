@@ -6,7 +6,7 @@ public class Player_Movement : MonoBehaviour
 {
     private Rigidbody2D body;
     [SerializeField] private float speed;
-    private float jumpheight;
+    private bool isgrounded;
 
     private void Awake()
     {
@@ -14,30 +14,36 @@ public class Player_Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
         /* A D Movements */
-        if (Input.GetKey (KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             body.velocity = new Vector2(speed, body.velocity.y);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            body.velocity = new Vector2(- speed, body.velocity.y);
+            body.velocity = new Vector2(-speed, body.velocity.y);
         }
 
-        if (Input.GetKey (KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && isgrounded)
         {
             Jump();
         }
-        
+
         void Jump()
         {
             body.velocity = new Vector2(body.velocity.x, speed);
+            isgrounded = false;
         }
-
-        /*something */
     }
+        /*Check if Grounded by using ground GameTag */
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+         if (collision.gameObject.tag == "Ground")
+             isgrounded = true;
+    }
+
 }
