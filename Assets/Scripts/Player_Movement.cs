@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
     private Rigidbody2D body;
-    private float speed;
+    [SerializeField] private float speed;
     private float jumpheight;
 
     private void Awake()
@@ -16,23 +16,26 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed = 0.2f;
-        jumpheight = 1f;
 
         /* A D Movements */
         if (Input.GetKey (KeyCode.D))
         {
-            transform.Translate(speed, body.velocity.y, 0f);
+            body.velocity = new Vector2(speed, body.velocity.y);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(- speed, body.velocity.y, 0f);
+            body.velocity = new Vector2(- speed, body.velocity.y);
         }
 
         if (Input.GetKey (KeyCode.Space))
         {
-            transform.Translate(body.velocity.x, jumpheight, 0f);
+            Jump();
+        }
+        
+        void Jump()
+        {
+            body.velocity = new Vector2(body.velocity.x, speed);
         }
 
         /*something */
