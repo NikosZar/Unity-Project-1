@@ -300,10 +300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c43beb07ec8d9440bedaac568f50482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBox: {fileID: 0}
-  dialogueText: 0
-  dialogue: Howdy
-  dialogueActive: 0
+  dialogueBox: {fileID: 596805463}
+  dialogueText: {fileID: 596805465}
+  dialogue: Howdy Partner
+  PlayerInRange: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
